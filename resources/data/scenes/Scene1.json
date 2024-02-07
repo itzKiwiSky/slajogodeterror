@@ -1,0 +1,51 @@
+{
+    "scene" : {
+        "properties" : {
+            "size" : {
+                "width" : 2000,
+                "height" : 768
+            },
+            "camera" : {
+                "position" : [0, 0],
+                "rotation" : 0,
+                "zoom" : 1,
+                "smooth" : 0.3,
+                "isStatic" : false
+            },
+            "player" : {
+                "position" : [640, 480]
+            }
+        },
+        "objects" : [
+            {
+                "textureid" : "backdrop_wall",
+                "properties" : {
+                    "position" : [0, 0],
+                    "scale" : [1, 0.5],
+                    "rotation" : 0,
+                    "order" : 1,
+                    "origin" : [0, 0]
+                }
+            }
+        ],
+        "actionBoxes" : [
+            {
+                "properties" : {
+                    "x" : 940,
+                    "y" : 480,
+                    "w" : 32,
+                    "h" : 64,
+                    "hitted" : false
+                },
+                "onAction" : [
+                    {
+                        "id" : "none",
+                        "args" : []
+                    }
+                ],
+                "onHit" : [
+                ]
+            }
+        ]
+    }
+}
