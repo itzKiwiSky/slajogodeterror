@@ -115,7 +115,7 @@ function love.load()
     collectgarbage("collect")
 
     gamestate.registerEvents({'update', 'mousepressed', 'mousereleased', 'keypressed', 'keyreleased', 'wheelmoved'})
-    gamestate.switch(minigamestate)
+    gamestate.switch(mapeditorstate)
 end
 
 function love.draw()
