@@ -15,7 +15,7 @@ function love.conf(w)
 
     --% Storage %--
     w.externalstorage       =       true
-    w.identity              =       "com.company.mygame"
+    w.identity              =       "com.emptydoll.pinkbird"
 
     --% Modules %--
     w.modules.audio         =       true

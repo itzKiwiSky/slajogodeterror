@@ -7,14 +7,19 @@
             [X] Decodificação do arquivo
         [.] Editor de cenas
         [X] Prototipo do player
-        [.] Ações
+        [X] Ações
             [X] Event manager
             [X] Bind events
             [X] Event handling
             [X] Event triggering
+    [X] Puzzles
+        [X] Criação de um puzzle teste
+
+        
+[v0.0.2]
+
+[.] Ferramental de desenvolvimento
     [.] Cutscenes com seleção
         [.] Sistema de timeline
         [.] Editor de timeline
         [.] Editor de falas e Ações
-    [X] Puzzles
-        [X] Criação de um puzzle teste

@@ -6,7 +6,7 @@ function playstate:enter()
     -- import components --
     controls = require 'src.Components.Controls'
     player = require 'src.Components.Objects.Player'
-    _cameraClamp = require 'src.Components.Snippets.Editors.SceneEditor.PlayState.CameraClamp'
+    _cameraClamp = require 'src.Components.Snippets.PlayState.CameraClamp'
 
     -- object holder --
     sceneObjects = {}
@@ -15,7 +15,7 @@ function playstate:enter()
     scenedata = json.decode(love.filesystem.read("resources/data/scenes/" .. playstate.sceneFile .. ".json"))
 
     -- camera config based on the  file specifications --
-    viewport:lookAt(scenedata.scene.properties.camera.position[1], scenedata.scene.properties.camera.position[2])
+    camTarget.x, camTarget.y = scenedata.scene.properties.camera.position[1], scenedata.scene.properties.camera.position[2]
     viewport:zoomTo(scenedata.scene.properties.camera.zoom)
 
 

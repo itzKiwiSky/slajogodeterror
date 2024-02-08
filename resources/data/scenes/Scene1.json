@@ -14,10 +14,12 @@
             },
             "player" : {
                 "position" : [640, 480]
-            }
+            },
+            "backgroundColor" : [0, 0, 0]
         },
         "objects" : [
             {
+                "name" : "",
                 "textureid" : "backdrop_wall",
                 "properties" : {
                     "position" : [0, 0],

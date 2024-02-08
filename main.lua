@@ -2,6 +2,8 @@ require('src.Components.Initialization.Run')
 require('src.Components.Initialization.ErrorHandler')
 preloader = require 'src.Components.Initialization.Preloader'
 
+_gameVer = 0
+
 function love.load()
     --% lib sources %--
     math.randomseed(os.time())
@@ -10,6 +12,7 @@ function love.load()
     json = require 'libraries.json'
     g3d = require 'libraries.g3d'
     camera = require 'libraries.camera'
+    deep = require 'libraries.deep'
     gamestate = require 'libraries.gamestate'
     timer = require 'libraries.timer'
     lip = require 'libraries.lip'
@@ -47,6 +50,9 @@ function love.load()
         system = {
             fontSize = 20
         },
+        dev = {
+            enableEditors = true
+        }
     }
 
     --% Addon loader %--
@@ -114,7 +120,20 @@ function love.load()
     birdIamge:release()
     collectgarbage("collect")
 
-    gamestate.registerEvents({'update', 'mousepressed', 'mousereleased', 'keypressed', 'keyreleased', 'wheelmoved'})
+    if registers.dev.enableEditors then
+        love.filesystem.createDirectory("dev")
+        love.filesystem.createDirectory("dev/scenes")
+    end
+
+    gamestate.registerEvents({
+        'update', 
+        'mousepressed', 
+        'mousereleased', 
+        'keypressed', 
+        'keyreleased', 
+        'wheelmoved',
+        'mousemoved',
+    })
     gamestate.switch(mapeditorstate)
 end
 

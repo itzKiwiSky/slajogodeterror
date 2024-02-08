@@ -4,7 +4,7 @@ return function()
             if slab.MenuItem("New Scene") then
                 _popupCreateMapVisible = true
             end
-            if slab.MenuItem("New Scene") then
+            if slab.MenuItem("Load Scene") then
                 _popupLoadMapVisible = true
             end
             if slab.MenuItem("Save") then
@@ -15,9 +15,12 @@ return function()
             slab.Separator()
             if slab.MenuItem("Quit") then
                 _confirmPopupVisible = true
-                if _confirmPopupVisible then
-                    
-                end
+            end
+            slab.EndMenu()
+        end
+        if slab.BeginMenu("Edit") then
+            if slab.MenuItem("Open scenes folder") then
+                love.system.openURL("file://" .. love.filesystem.getSaveDirectory() .. "/dev/scenes")
             end
             slab.EndMenu()
         end
