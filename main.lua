@@ -4,6 +4,9 @@ preloader = require 'src.Components.Initialization.Preloader'
 
 function love.load()
     --% lib sources %--
+    math.randomseed(os.time())
+
+    anima = require 'libraries.anima'
     json = require 'libraries.json'
     g3d = require 'libraries.g3d'
     camera = require 'libraries.camera'
@@ -111,8 +114,8 @@ function love.load()
     birdIamge:release()
     collectgarbage("collect")
 
-    gamestate.registerEvents({'update', 'mousepressed', 'mousereleased', 'keypressed', 'keyreleased', 'wheelmoved', 'mousemoved'})
-    gamestate.switch(mapeditorstate)
+    gamestate.registerEvents({'update', 'mousepressed', 'mousereleased', 'keypressed', 'keyreleased', 'wheelmoved'})
+    gamestate.switch(minigamestate)
 end
 
 function love.draw()

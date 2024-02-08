@@ -16,5 +16,5 @@
         [.] Sistema de timeline
         [.] Editor de timeline
         [.] Editor de falas e Ações
-    [.] Puzzles
-        [.] Criação de um puzzle teste
+    [X] Puzzles
+        [X] Criação de um puzzle teste
