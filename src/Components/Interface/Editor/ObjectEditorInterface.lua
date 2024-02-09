@@ -1,7 +1,7 @@
 return function()
     local obj = _sceneObjects[_selectedObjectIndex or 1]
     slab.BeginWindow("objectEditorWindow", {Title = "Object Manager", AllowMove = true, AllowResize = false, X = love.graphics.getWidth() - 390, Y = 390})
-        if _selectedObjectIndex ~= 0 and _selectedObjectIndex ~= nil then
+        if _selectedObjectIndex ~= nil then
             slab.Text("Object Name:")
             slab.SameLine()
             if slab.Input("objectEditorNameInput", {Text = obj.name}) then
@@ -30,10 +30,10 @@ return function()
                 obj.properties.position[2] = slab.GetInputNumber()
             end
 
-            slab.Text("LayerID:")
+            slab.Text("Order ID:")
             slab.SameLine()
-            if slab.Input("objectEditorPositionZInput", {Text = obj.properties.layer, NumbersOnly = true}) then
-                obj.properties.layer = slab.GetInputNumber()
+            if slab.Input("objectEditorPositionZInput", {Text = obj.properties.order, NumbersOnly = true}) then
+                obj.properties.order = slab.GetInputNumber()
             end
 
             slab.Text("Rotation:")
@@ -45,14 +45,14 @@ return function()
             slab.Text("Scale")
             slab.Text("X:")
             slab.SameLine()
-            if slab.Input("objectEditorScaleXInput", {Text = obj.properties.size[1], NumbersOnly = true}) then
-                obj.properties.size[1] = slab.GetInputNumber()
+            if slab.Input("objectEditorScaleXInput", {Text = obj.properties.scale[1], NumbersOnly = true}) then
+                obj.properties.scale[1] = slab.GetInputNumber()
             end
             slab.SameLine()
             slab.Text("Y:")
             slab.SameLine()
-            if slab.Input("objectEditorScaleYInput", {Text = obj.properties.size[2], NumbersOnly = true}) then
-                obj.properties.size[2] = slab.GetInputNumber()
+            if slab.Input("objectEditorScaleYInput", {Text = obj.properties.scale[2], NumbersOnly = true}) then
+                obj.properties.scale[2] = slab.GetInputNumber()
             end
 
             slab.Text("Origin")
@@ -68,9 +68,12 @@ return function()
                 obj.properties.origin[2] = slab.GetInputNumber()
             end
             if slab.Button("Center Origin") then
-                if _textureQueue[obj.textureid] then
-                    obj.properties.origin[1] = _textureQueue[obj.textureid]:getWidth() / 2
-                    obj.properties.origin[2] = _textureQueue[obj.textureid]:getHeight() / 2
+                if AssetQueue.images[obj.textureid] then
+                    obj.properties.origin[1] = AssetQueue.images[obj.textureid]:getWidth() / 2
+                    obj.properties.origin[2] = AssetQueue.images[obj.textureid]:getHeight() / 2
+                else
+                    obj.properties.origin[1] = AssetQueue.images.no_texture:getWidth() / 2
+                    obj.properties.origin[2] = AssetQueue.images.no_texture:getHeight() / 2
                 end
             end
             slab.Rectangle({Mode = "fill", W = 16, H = 16, Color = obj.properties.color, Rounding = 5})

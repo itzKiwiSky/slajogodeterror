@@ -24,11 +24,11 @@ return function()
         end
         slab.SameLine()
         if slab.Button("Load") then
-            if _selectedFileId > 0 and _selectedFileId ~= nil then
+            if _selectedFileId ~= nil then
                 mapeditorstate.fileToEdit = "dev/scenes/" .. files[_selectedFileId]
                 _mapData = json.decode(love.filesystem.read(mapeditorstate.fileToEdit))
-                _sceneObjects = _mapData.objects
-                _sceneActionBoxes = _mapData.actionBoxes
+                _sceneObjects = _mapData.scene.objects
+                _sceneActionBoxes = _mapData.scene.actionBoxes
                 _isMapLoaded = true
                 _popupLoadMapVisible = false
             end

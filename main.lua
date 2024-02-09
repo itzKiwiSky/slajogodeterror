@@ -132,7 +132,6 @@ function love.load()
         'keypressed', 
         'keyreleased', 
         'wheelmoved',
-        'mousemoved',
     })
     gamestate.switch(mapeditorstate)
 end

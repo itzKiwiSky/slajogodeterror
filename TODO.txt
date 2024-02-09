@@ -1,11 +1,11 @@
 [v0.0.1]
 
-[.] Prototipo
-    [.] Runner
+[X] Prototipo
+    [X] Runner
         [X] Sistema de cenas
             [X] Formato de arquivo
             [X] Decodificação do arquivo
-        [.] Editor de cenas
+        [X] Editor de cenas
         [X] Prototipo do player
         [X] Ações
             [X] Event manager

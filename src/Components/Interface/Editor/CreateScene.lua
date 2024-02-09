@@ -28,8 +28,8 @@ return function()
             createSceneFile(_sceneFilename, _sceneSizes._width, _sceneSizes._height)
             mapeditorstate.fileToEdit = "dev/scenes/" .. _sceneFilename .. ".scene"
             _mapData = json.decode(love.filesystem.read("dev/scenes/" .. _sceneFilename .. ".scene"))
-            _sceneObjects = _mapData.objects
-            _sceneActionBoxes = _mapData.actionBoxes
+            _sceneObjects = _mapData.scene.objects
+            _sceneActionBoxes = _mapData.scene.actionBoxes
             _isMapLoaded = true
             _popupCreateMapVisible = false
         end
