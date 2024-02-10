@@ -23,3 +23,7 @@
         [.] Sistema de timeline
         [.] Editor de timeline
         [.] Editor de falas e Ações
+[.] Suporte basico a conquistas
+    [.] popup da conquistas
+    [.] gerenciador de conquistas
+[X] Adicionar suporte a gif pra rodar no loader

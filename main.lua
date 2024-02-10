@@ -8,6 +8,7 @@ function love.load()
     --% lib sources %--
     math.randomseed(os.time())
 
+    devi = require 'libraries.devi'
     anima = require 'libraries.anima'
     json = require 'libraries.json'
     g3d = require 'libraries.g3d'
@@ -29,7 +30,9 @@ function love.load()
     collision = require 'libraries.collision'
     recursiveLoader = require 'src.Components.Initialization.RecursiveLoader'
     eventmanager = require 'src.Components.EventManager'
-    local eventInitialization = require('src.Components.Initialization.EventDeclaration')()
+
+    devi.init("libraries/devi/bin")
+
     viewport = camera()
     viewport.locked = false
 
@@ -62,14 +65,19 @@ function love.load()
     --% State loader %--
     recursiveLoader("src/States")
 
+    local eventInitialization = require('src.Components.Initialization.EventDeclaration')()
+
     --% Helper functions %--
     fontmanager = require 'src.Components.Helpers.FontManager'
     lovecallbacks = require 'src.Components.Helpers.LoveCallbacks'
 
     --% Save setup %--
-    lollipop.currentSave.game = {}
+    lollipop.currentSave.game = {
+        achievments = {},
+        settings = {},
+    }
 
-    lollipop.initializeSlot("game")
+    lollipop.initializeSlot("bird")
 
     --% Content management %--
     if love.filesystem.isFused() then

@@ -1,12 +1,12 @@
 return function()
-    slab.BeginWindow("objectManagerWindow", {Title = "Object Manager", AllowMove = true, AllowResize = false, X = love.graphics.getWidth() - 270, Y = 90})
-        slab.BeginListBox("objectManagerListBox", {W = 256, H = 256})
+    slab.BeginWindow("actionBoxesManagerWindow", {Title = "Object Manager", AllowMove = true, AllowResize = false, X = love.graphics.getWidth() - 270, Y = 90})
+        slab.BeginListBox("actionBoxesManagerListBox", {W = 256, H = 256})
             for o = 1, #_sceneActionBoxes, 1 do
-                slab.BeginListBoxItem("objectManagerListBoxItem" .. o, {Selected = _selectedActionBoxIndex == o})
+                slab.BeginListBoxItem("actionBoxesManagerListBoxItem" .. o, {Selected = _selectedActionBoxIndex == o})
                     if AssetQueue.images[_sceneActionBoxes[o].textureid] then
-                        slab.Image("objectManagerImage", {Image = AssetQueue.images[_sceneActionBoxes[o].textureid], W = 32, H = 32})
+                        slab.Image("actionBoxesManagerImage", {Image = AssetQueue.images[_sceneActionBoxes[o].textureid], W = 32, H = 32})
                     else
-                        slab.Image("objectManagerImage", {Image = AssetQueue.images.no_texture, W = 32, H = 32})
+                        slab.Image("actionBoxesManagerImage", {Image = AssetQueue.images.no_texture, W = 32, H = 32})
                     end
                     slab.SameLine({CenterY = true})
                     slab.Text(_sceneActionBoxes[o].name)

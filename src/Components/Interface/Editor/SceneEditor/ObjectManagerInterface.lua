@@ -38,7 +38,7 @@ return function()
         slab.SameLine()
         if slab.Button("-") then
             if #_sceneObjects > 0 then
-                if _selectedObjectIndex ~= nil and #_selectedObjectIndex > 0 then
+                if _selectedObjectIndex ~= nil then
                     table.remove(_sceneObjects, _selectedObjectIndex)
                     _selectedObjectIndex = nil
                 else

@@ -7,12 +7,15 @@ function mapeditorstate:enter()
     createSceneFile = require 'src.Components.Snippets.Editors.SceneEditor.CreateSceneFile'
 
     -- interfaces --
-    menubar = require 'src.Components.Interface.Editor.MenuBar'
-    loadMapPopup = require 'src.Components.Interface.Editor.OpenScene'
-    createMapPopup = require 'src.Components.Interface.Editor.CreateScene'
-    objectManager = require 'src.Components.Interface.Editor.ObjectManagerInterface'
-    objectEditor = require 'src.Components.Interface.Editor.ObjectEditorInterface'
-    actionBoxesManager = require 'src.Components.Interface.Editor.ActionBoxesManagerInterface'
+    menubar = require 'src.Components.Interface.Editor.SceneEditor.MenuBar'
+    loadMapPopup = require 'src.Components.Interface.Editor.SceneEditor.OpenScene'
+    createMapPopup = require 'src.Components.Interface.Editor.SceneEditor.CreateScene'
+    objectManager = require 'src.Components.Interface.Editor.SceneEditor.ObjectManagerInterface'
+    objectEditor = require 'src.Components.Interface.Editor.SceneEditor.ObjectEditorInterface'
+    actionBoxesManager = require 'src.Components.Interface.Editor.SceneEditor.ActionBoxesManagerInterface'
+    actionBoxesEditor = require 'src.Components.Interface.Editor.SceneEditor.ActionBoxesEditorInterface'
+    actionBoxesEventSelector = require 'src.Components.Interface.Editor.SceneEditor.ActionBoxesEventSelectorInterface'
+    eventManagerWindow = require 'src.Components.Interface.Editor.SceneEditor.EventManagerInterface'
 
     _selectedFileId = nil
     -- scene metadata --
@@ -30,6 +33,8 @@ function mapeditorstate:enter()
     _confirmedExit = false
     _isMapLoaded = false
     _colorSelectorOpen = false
+    _eventSelectionPopupVisible = false
+    _eventManagerWindowVisible = false
 
     _mapData = {}
 
@@ -48,6 +53,7 @@ function mapeditorstate:enter()
     _zoom = 1
     _allowMouseAction = true
     _allowToMove = false
+    _eventType = "onAction"
 
     slab.Initialize({"NoDocks"})
 end
@@ -59,8 +65,8 @@ function mapeditorstate:draw()
         editorViewport:attach()
 
             for _, obj in ipairs(_sceneObjects) do
-                love.graphics.setColor(obj.properties.color)
                 deep.queue(obj.properties.order, function()
+                    love.graphics.setColor(obj.properties.color)
                     if AssetQueue.images[obj.textureid] then
                         love.graphics.draw(
                             AssetQueue.images[obj.textureid],
@@ -84,12 +90,14 @@ function mapeditorstate:draw()
                             obj.properties.origin[2]
                         )
                     end
+                    love.graphics.setColor(1, 1, 1, 1)
                 end)
             end
             
             deep.execute()
 
             for _, box in ipairs(_sceneActionBoxes) do
+                love.graphics.print(box.name, box.properties.x, box.properties.y - 10)
                 love.graphics.rectangle("line", box.properties.x, box.properties.y, box.properties.w, box.properties.h)
             end
 
@@ -133,9 +141,20 @@ function mapeditorstate:update(elapsed)
     if _isMapLoaded then
         if _editorMode == 0 then
             objectManager()
-            objectEditor()
+            if _selectedObjectIndex ~= nil then
+                objectEditor()
+            end
         elseif _editorMode == 1 then
             actionBoxesManager()
+            if _selectedActionBoxIndex ~= nil then
+                actionBoxesEditor()
+            end
+            if _eventSelectionPopupVisible then
+                actionBoxesEventSelector()
+            end
+            if _eventManagerWindowVisible then
+                eventManagerWindow()
+            end
         end
     end
 
@@ -160,19 +179,21 @@ function mapeditorstate:update(elapsed)
             _editorSpeed = 10
         end
 
-        _allowToMove = love.mouse.isDown(2)
+        _allowToMove = slab.IsVoidHovered()
     
-        if love.keyboard.isDown("d") then
-            _editorPosition[1] = _editorPosition[1] + _editorSpeed
-        end
-        if love.keyboard.isDown("a") then
-            _editorPosition[1] = _editorPosition[1] - _editorSpeed
-        end
-        if love.keyboard.isDown("w") then
-            _editorPosition[2] = _editorPosition[2] - _editorSpeed
-        end
-        if love.keyboard.isDown("s") then
-            _editorPosition[2] = _editorPosition[2] + _editorSpeed
+        if _allowToMove then
+            if love.keyboard.isDown("d") then
+                _editorPosition[1] = _editorPosition[1] + _editorSpeed
+            end
+            if love.keyboard.isDown("a") then
+                _editorPosition[1] = _editorPosition[1] - _editorSpeed
+            end
+            if love.keyboard.isDown("w") then
+                _editorPosition[2] = _editorPosition[2] - _editorSpeed
+            end
+            if love.keyboard.isDown("s") then
+                _editorPosition[2] = _editorPosition[2] + _editorSpeed
+            end
         end
     
         editorViewport:zoomTo(_zoom)
