@@ -35,6 +35,7 @@ function mapeditorstate:enter()
     _colorSelectorOpen = false
     _eventSelectionPopupVisible = false
     _eventManagerWindowVisible = false
+    _mapPropertiesEditorVisible = false
 
     _mapData = {}
 

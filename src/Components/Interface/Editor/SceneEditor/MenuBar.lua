@@ -24,6 +24,10 @@ return function()
             if slab.MenuItem("Open scenes folder") then
                 love.system.openURL("file://" .. love.filesystem.getSaveDirectory() .. "/dev/scenes")
             end
+            slab.Separator()
+            if slab.MenuItem("Edit map properties") then
+                _mapPropertiesEditorVisible = true
+            end
             slab.EndMenu()
         end
         if slab.BeginMenu("View") then
