@@ -16,6 +16,7 @@ function mapeditorstate:enter()
     actionBoxesEditor = require 'src.Components.Interface.Editor.SceneEditor.ActionBoxesEditorInterface'
     actionBoxesEventSelector = require 'src.Components.Interface.Editor.SceneEditor.ActionBoxesEventSelectorInterface'
     eventManagerWindow = require 'src.Components.Interface.Editor.SceneEditor.EventManagerInterface'
+    mapPropertiesWindow = require 'src.Components.Interface.Editor.SceneEditor.MapPropertiesInterface'
 
     _selectedFileId = nil
     -- scene metadata --
@@ -36,6 +37,7 @@ function mapeditorstate:enter()
     _eventSelectionPopupVisible = false
     _eventManagerWindowVisible = false
     _mapPropertiesEditorVisible = false
+    _mapPropertiesEditorColorPickerVisible = false
 
     _mapData = {}
 
@@ -156,6 +158,9 @@ function mapeditorstate:update(elapsed)
             if _eventManagerWindowVisible then
                 eventManagerWindow()
             end
+        end
+        if _mapPropertiesEditorVisible then
+            mapPropertiesWindow()
         end
     end
 
