@@ -1,0 +1,46 @@
+{
+    "scene" : {
+        "keyframes" : [
+            {
+                "frameid" : "",
+                "isSelection" : {
+                    "doSelection" : false,
+                    "time" : 0,
+                    "options" : [
+                        {
+                            "text" : "this is another sample",
+                            "onSelected" : []
+                        }
+                    ]
+                },
+                "dialogues" : [
+                    {
+                        "characterName" : "",
+                        "text" : "This is a sample text",
+                        "onTextComplete" : []
+                    }
+                ]
+            },
+            {
+                "frameid" : "",
+                "isSelection" : {
+                    "doSelection" : false,
+                    "time" : 0,
+                    "options" : [
+                        {
+                            "text" : "this is another sample",
+                            "onSelected" : []
+                        }
+                    ]
+                },
+                "dialogues" : [
+                    {
+                        "characterName" : "",
+                        "text" : "This is a sample text",
+                        "onTextComplete" : []
+                    }
+                ]
+            }
+        ]
+    }
+}

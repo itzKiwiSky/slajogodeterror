@@ -12,8 +12,6 @@ return function()
                     event.metaArgs[p] = tostring(debug.getlocal(eventmanager.events[eventmanager.eventNames[e]], p))
                 end
 
-                print(debug.getTableContent(event))
-
                 if _eventType == "onAction" then
                     table.insert(_sceneActionBoxes[_selectedActionBoxIndex].onAction, #_sceneActionBoxes[_selectedActionBoxIndex].onAction + 1, event)
                 elseif _eventType == "onHit" then

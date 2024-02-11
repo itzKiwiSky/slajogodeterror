@@ -2,6 +2,16 @@ playstate = {}
 
 playstate.sceneFile = "Scene1"
 
+function playstate:genStage()
+    sceneObjects = {}
+    sceneActionBoxes = {}
+    scenedata = json.decode(love.filesystem.read("resources/data/scenes/" .. playstate.sceneFile .. ".scene"))
+    -- do object handling -- 
+    sceneObjects = scenedata.scene.objects
+    -- do action boxes handling --
+    sceneActionBoxes = scenedata.scene.actionBoxes
+end
+
 function playstate:enter()
     -- import components --
     controls = require 'src.Components.Controls'
@@ -11,18 +21,13 @@ function playstate:enter()
     -- object holder --
     sceneObjects = {}
     sceneActionBoxes = {}
-    -- scene file decodification --
-    scenedata = json.decode(love.filesystem.read("resources/data/scenes/" .. playstate.sceneFile .. ".json"))
+
+    playstate:genStage()
 
     -- camera config based on the  file specifications --
     camTarget.x, camTarget.y = scenedata.scene.properties.camera.position[1], scenedata.scene.properties.camera.position[2]
     viewport:zoomTo(scenedata.scene.properties.camera.zoom)
 
-
-    -- do object handling -- 
-    sceneObjects = scenedata.scene.objects
-    -- do action boxes handling --
-    sceneActionBoxes = scenedata.scene.actionBoxes
 
     -- some variables --
     _isLockedToPlayer = true

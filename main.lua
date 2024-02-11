@@ -55,6 +55,9 @@ function love.load()
         },
         dev = {
             enableEditors = true
+        },
+        game = {
+            globalvaribles = {}
         }
     }
 

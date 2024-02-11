@@ -7,5 +7,5 @@ return function(_filename)
     end
 
     playstate.sceneFile = _filename
-    playstate:enter()
+    playstate:genStage()
 end
