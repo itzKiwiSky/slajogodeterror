@@ -15,15 +15,15 @@
     [X] Puzzles
         [X] Criação de um puzzle teste
 
-        
 [v0.0.2]
 
-[.] Ferramental de desenvolvimento
-    [.] Cutscenes com seleção
-        [.] Sistema de timeline
-        [.] Editor de timeline
-        [.] Editor de falas e Ações
+
+[.] Cutscenes com seleção
+    [.] Sistema de timeline
+    [.] Sistema de diaologo baseado em arquivos
+    [.] importacao async de strings
+    [.] suporte a multilinguagem
 [.] Suporte basico a conquistas
     [.] popup da conquistas
-    [.] gerenciador de conquistas
+    [X] gerenciador de conquistas
 [X] Adicionar suporte a gif pra rodar no loader

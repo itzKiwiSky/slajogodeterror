@@ -77,7 +77,25 @@ function love.load()
     --% Save setup %--
     lollipop.currentSave.game = {
         achievments = {},
-        settings = {},
+        settings = {
+            graphics = {
+                useShaders = true,
+                vsync = false,
+                filter = "linear",
+                subtitleBGOpacity = 100
+            },
+            audio = {
+                master = 10,
+                music = 10,
+                sfx = 10,
+                playVoices = true
+            },
+            misc = {
+                subtitles = true,
+                language = "en",
+                subtitleBG = true,
+            }
+        },
     }
 
     lollipop.initializeSlot("bird")
@@ -102,7 +120,7 @@ function love.load()
     loveimage = love.graphics.newImage("resources/images/love.png")
     lmxsdk = love.graphics.newImage("resources/images/luminixsdk.png")
     plus = love.graphics.newImage("resources/images/plus.png")
-    birdIamge = love.graphics.newImage("resources/images/bird.png")
+    birdImage = devi.newImage("resources/images/bird2.gif")
 
 
     AssetQueue = {
@@ -128,7 +146,6 @@ function love.load()
     loveimage:release()
     lmxsdk:release()
     plus:release()
-    birdIamge:release()
     collectgarbage("collect")
 
     if registers.dev.enableEditors then
@@ -144,7 +161,7 @@ function love.load()
         'keyreleased', 
         'wheelmoved',
     })
-    gamestate.switch(mapeditorstate)
+    gamestate.switch(cutscenestate)
 end
 
 function love.draw()

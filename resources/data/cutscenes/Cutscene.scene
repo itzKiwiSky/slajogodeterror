@@ -1,45 +1,26 @@
 {
     "scene" : {
-        "keyframes" : [
+        "useFile" : "dialogue1.dlg",
+        "onStart" : [
             {
-                "frameid" : "",
-                "isSelection" : {
-                    "doSelection" : false,
-                    "time" : 0,
-                    "options" : [
-                        {
-                            "text" : "this is another sample",
-                            "onSelected" : []
-                        }
-                    ]
-                },
-                "dialogues" : [
-                    {
-                        "characterName" : "",
-                        "text" : "This is a sample text",
-                        "onTextComplete" : []
-                    }
-                ]
-            },
+                "id" : "SetCamFocus",
+                "args" : [640, 480]
+            }
+        ],
+        "onEnd" : [],
+        "sections" : [
             {
-                "frameid" : "",
-                "isSelection" : {
-                    "doSelection" : false,
-                    "time" : 0,
-                    "options" : [
-                        {
-                            "text" : "this is another sample",
-                            "onSelected" : []
-                        }
-                    ]
-                },
-                "dialogues" : [
-                    {
-                        "characterName" : "",
-                        "text" : "This is a sample text",
-                        "onTextComplete" : []
+                "sectionConfig" : {
+                    "selection" : {
+                        "allowSelection" : false,
+                        "selectionTimer" : 0
+                    },
+                    "displayTexture" : "cutscene1_test",
+                    "transition" : {
+                        "fadeIn" : 0.2,
+                        "fadeOut" : 0.2
                     }
-                ]
+                }
             }
         ]
     }

@@ -1,0 +1,12 @@
+{
+    "sections" : [
+        {
+            "dialogues" : [
+                {
+                    "text" : "Heyo this is a sample text",
+                    "delay" : 3
+                }
+            ]
+        }
+    ]
+}
