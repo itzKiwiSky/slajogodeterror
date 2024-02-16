@@ -20,6 +20,7 @@ function love.load()
     nativefs = require 'libraries.nativefs'
     xml = require 'libraries.xml'
     slab = require 'libraries.slab'
+    lume = require 'libraries.lume'
     suit = require 'libraries.suit'
     bump = require 'libraries.bump'
     moonshine = require 'libraries.moonshine'
@@ -82,7 +83,7 @@ function love.load()
                 useShaders = true,
                 vsync = false,
                 filter = "linear",
-                subtitleBGOpacity = 100
+                subtitleBG = true
             },
             audio = {
                 master = 10,

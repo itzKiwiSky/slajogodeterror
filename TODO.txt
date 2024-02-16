@@ -18,12 +18,11 @@
 [v0.0.2]
 
 
-[.] Cutscenes com seleção
-    [.] Sistema de timeline
-    [.] Sistema de diaologo baseado em arquivos
-    [.] importacao async de strings
-    [.] suporte a multilinguagem
-[.] Suporte basico a conquistas
-    [.] popup da conquistas
+[X] Cutscenes com seleção
+    [X] Sistema de timeline
+    [X] Sistema de diaologo baseado em arquivos
+    [X] importacao async de strings
+    [X] suporte a multilinguagem
+[X] Suporte basico a conquistas
     [X] gerenciador de conquistas
 [X] Adicionar suporte a gif pra rodar no loader

@@ -1,12 +1,28 @@
 {
-    "sections" : [
+    "dialogues" : [
         {
-            "dialogues" : [
-                {
-                    "text" : "Heyo this is a sample text",
-                    "delay" : 3
-                }
-            ]
+            "text" : "",
+            "time" : "0:00:0"
+        },
+        {
+            "text" : "Hello world",
+            "time" : "0:01:0"
+        },
+        {
+            "text" : "This is a test\nof subtitles I guess",
+            "time" : "0:05:0"
+        },
+        {
+            "text" : "...",
+            "time" : "0:12:0"
+        },
+        {
+            "text" : "bye bye fuckers\nfuck",
+            "time" : "0:15:0"
+        },
+        {
+            "text" : "Hello again, this time\nlets test multiline\nfuckers",
+            "time" : "0:17:0"
         }
     ]
 }

@@ -1,26 +1,23 @@
 {
     "scene" : {
         "useFile" : "dialogue1.dlg",
-        "onStart" : [
+        "onStart" : [],
+        "section" : [
             {
-                "id" : "SetCamFocus",
-                "args" : [640, 480]
-            }
-        ],
-        "onEnd" : [],
-        "sections" : [
+                "displayTexture" : "",
+                "time" : "0:00:0"
+            },
             {
-                "sectionConfig" : {
-                    "selection" : {
-                        "allowSelection" : false,
-                        "selectionTimer" : 0
-                    },
-                    "displayTexture" : "cutscene1_test",
-                    "transition" : {
-                        "fadeIn" : 0.2,
-                        "fadeOut" : 0.2
-                    }
-                }
+                "displayTexture" : "cutscene1_test",
+                "time" : "0:05:0"
+            },
+            {
+                "displayTexture" : "cutscene2_test",
+                "time" : "0:08:0"
+            },
+            {
+                "displayTexture" : "cutscene3_test",
+                "time" : "0:12:0"
             }
         ]
     }
