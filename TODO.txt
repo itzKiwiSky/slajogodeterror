@@ -17,7 +17,6 @@
 
 [v0.0.2]
 
-
 [X] Cutscenes com seleção
     [X] Sistema de timeline
     [X] Sistema de diaologo baseado em arquivos
