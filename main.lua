@@ -32,6 +32,7 @@ function love.load()
     xml = require 'libraries.xml'
     slab = require 'libraries.slab'
     lume = require 'libraries.lume'
+    fireui = require 'libraries.fireui'
     suit = require 'libraries.suit'
     bump = require 'libraries.bump'
     moonshine = require 'libraries.moonshine'
@@ -94,19 +95,20 @@ function love.load()
             graphics = {
                 useShaders = true,
                 vsync = false,
-                filter = "linear",
-                subtitleBG = true
+                filter = false,
+                lowDetailMode = false
             },
             audio = {
                 master = 10,
                 music = 10,
                 sfx = 10,
-                playVoices = true
+                playVoices = true,
+                voicesVolume = 10
             },
             misc = {
                 subtitles = true,
                 language = "en",
-                subtitleBG = true,
+                langID = 1
             }
         },
     }
@@ -130,9 +132,6 @@ function love.load()
     end
 
     --% Asset queue %--
-    loveimage = love.graphics.newImage("resources/love.png")
-    lmxsdk = love.graphics.newImage("resources/luminixsdk.png")
-    plus = love.graphics.newImage("resources/plus.png")
     birdImage = devi.newImage("resources/bird2.gif")
 
 
@@ -158,9 +157,6 @@ function love.load()
     fontmanager.updateFontList()
 
     --% Release unused assets %--
-    loveimage:release()
-    lmxsdk:release()
-    plus:release()
     collectgarbage("collect")
 
     if registers.dev.enableEditors then
@@ -176,7 +172,7 @@ function love.load()
         'keyreleased', 
         'wheelmoved',
     })
-    gamestate.switch(debugstate)
+    gamestate.switch(mainmenustate)
 end
 
 function love.draw()
@@ -199,3 +195,12 @@ Images: %s
     )
 end
 
+function love.keypressed(k)
+    if k == "f11" then
+        if love.graphics.isWireframe() then
+            love.graphics.setWireframe(false)
+        else
+            love.graphics.setWireframe(true)
+        end
+    end
+end

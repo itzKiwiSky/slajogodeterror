@@ -32,3 +32,10 @@
     [X] Audio posicional (+)
     [X] Chunking no loading de assets
     [X] fazer algo pra reabilitar suporte a GIF
+
+[0.0.4]
+
+[.] Menus
+    [.] Menu principal 
+    [.] Menu de configurações
+    [.] Menu de seleção de capitulos

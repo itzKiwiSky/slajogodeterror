@@ -62,6 +62,19 @@ function preloader.present(_type)
 end
 
 function preloader.clear()
+    for _, v in pairs(AssetQueue.images) do
+        AssetQueue.images[_]:release()
+    end
+
+    for _, v in pairs(AssetQueue.sounds) do
+        AssetQueue.sounds[_]:release()
+    end
+
+    for _, v in pairs(AssetQueue.fonts) do
+        AssetQueue.fonts[_]:release()
+    end
+
+
     lume.clear(AssetQueue.images)
     lume.clear(AssetQueue.sounds)
     lume.clear(AssetQueue.fonts)
