@@ -1,20 +1,31 @@
 debugstate = {}
 
 function debugstate:enter()
-    text = [[
-[1] - Save achievment
-[2] - Reset
-    ]]
+    controls = require 'src.Components.Controls'
+    player = require 'src.Components.Objects.Player'
+    audiosource = require 'src.Components.Objects.AudioSource'
 
-    bird = devi.newImage("resources/images/testbird.gif", { minDelay = 0.01})
+    audio = audiosource("test", 256, 480, 128, 1)
+    audio:loop(true)
+    audio:play()
+
+    audio2 = audiosource("audio", 780, 480, 128, 0.5)
+    audio2:loop(true)
+    audio2:play()
+
+    player:init(90, 480)
 end
 
 function debugstate:draw()
-    bird:draw(90, 90, 0, 0.5, 0.5)
-end
+    player:draw()
+    audio:draw()
+    audio2:draw()
+end 
 
-function debugstate:update()
-    
+function debugstate:update(elapsed)
+    player:update(elapsed)
+    audio:update(elapsed)
+    audio2:update(elapsed)
 end
 
 return debugstate

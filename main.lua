@@ -4,6 +4,17 @@ preloader = require 'src.Components.Initialization.Preloader'
 
 _gameVer = 0
 
+local function _installLib()
+    love.filesystem.createDirectory("bin")
+    if love.system.getOS() == "Windows" then
+        love.filesystem.write("bin/devi.dll", love.filesystem.read("libraries/devi/bin/devi.dll"))
+    elseif love.system.getOS() == "OS X" then
+        love.filesystem.write("bin/devi.dylib", love.filesystem.read("libraries/devi/bin/devi.dylib"))
+    elseif love.system.getOS() == "Linux" then
+        love.filesystem.write("bin/devi.so", love.filesystem.read("libraries/devi/bin/devi.so"))
+    end
+end
+
 function love.load()
     --% lib sources %--
     math.randomseed(os.time())
@@ -32,7 +43,8 @@ function love.load()
     recursiveLoader = require 'src.Components.Initialization.RecursiveLoader'
     eventmanager = require 'src.Components.EventManager'
 
-    devi.init("libraries/devi/bin")
+    _installLib()
+    devi.init(love.filesystem.getSaveDirectory() .. "/bin")
 
     viewport = camera()
     viewport.locked = false
@@ -118,10 +130,10 @@ function love.load()
     end
 
     --% Asset queue %--
-    loveimage = love.graphics.newImage("resources/images/love.png")
-    lmxsdk = love.graphics.newImage("resources/images/luminixsdk.png")
-    plus = love.graphics.newImage("resources/images/plus.png")
-    birdImage = devi.newImage("resources/images/bird2.gif")
+    loveimage = love.graphics.newImage("resources/love.png")
+    lmxsdk = love.graphics.newImage("resources/luminixsdk.png")
+    plus = love.graphics.newImage("resources/plus.png")
+    birdImage = devi.newImage("resources/bird2.gif")
 
 
     AssetQueue = {
@@ -132,13 +144,15 @@ function love.load()
 
 
     --% Asset preloading %--
-    preloader.init("images", "resources/images")
+    preloader.clear()
+
+    preloader.init("images", "resources/chunks/menu/images")
     preloader.present("images")
 
-    preloader.init("sounds", "resources/sounds")
+    preloader.init("sounds", "resources/chunks/menu/sounds")
     preloader.present("sounds")
 
-    preloader.init("fonts", "resources/fonts")
+    preloader.init("fonts", "resources/chunks/menu/fonts")
     preloader.present("fonts")
 
     fontmanager.updateFontList()
@@ -162,11 +176,26 @@ function love.load()
         'keyreleased', 
         'wheelmoved',
     })
-    gamestate.switch(cutscenestate)
+    gamestate.switch(debugstate)
 end
 
 function love.draw()
+    local graph = [[
+FPS: %s
+TextureMemory: %.2f mb
+Drawcalls: %s
+Images: %s
+    ]]
     gamestate.current():draw()
-    love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
+    love.graphics.print(
+        string.format(
+            graph, 
+            love.timer.getFPS(),
+            love.graphics.getStats().texturememory / 1024 / 1024,
+            love.graphics.getStats().drawcalls,
+            love.graphics.getStats().images
+        ),
+        10, 10
+    )
 end
 

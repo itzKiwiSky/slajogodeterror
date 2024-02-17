@@ -51,18 +51,20 @@ function preloader.present(_type)
     for a = 1, #preloader.assetsPath, 1 do
         love.graphics.clear(0, 0, 0)
     
-        love.graphics.rectangle("line", love.graphics.getWidth() / 2 - 128, 400, 256, 32, 10)
-        love.graphics.rectangle("fill", love.graphics.getWidth() / 2 - 128, 400, math.floor(256 * (preloader.assetProgress / #preloader.assetsPath)), 32, 10)
-    
-        love.graphics.draw(loveimage, love.graphics.getWidth() - loveimage:getWidth() * 0.1 - (plus:getWidth() * 1.5) * 2, love.graphics.getHeight() - loveimage:getHeight() * 0.1, 0, 0.1, 0.1)
-        birdImage:draw()
-        --love.graphics.draw(birdIamge, 220, 220, 0, 0.3, 0.3, birdIamge:getWidth() / 2, birdIamge:getHeight() / 2)
-        love.graphics.draw(plus, love.graphics.getWidth() - plus:getWidth() * 1.5 - (lmxsdk:getWidth() * 1.5), love.graphics.getHeight() - plus:getHeight() * 1.5, 0, 1.5)
-        love.graphics.draw(lmxsdk, love.graphics.getWidth() - (lmxsdk:getWidth() * 1.5), love.graphics.getHeight() - lmxsdk:getHeight() * 1.5, 0, 1.5, 1.5)
+        birdImage:draw(love.graphics.getWidth() - 100, 680, 0, 0.3, 0.3, birdImage:getWidth() / 2, birdImage:getHeight() / 2)
+        --love.graphics.draw(loveimage, love.graphics.getWidth() - loveimage:getWidth() * 0.1 - (plus:getWidth() * 1.5) * 2, love.graphics.getHeight() - loveimage:getHeight() * 0.1, 0, 0.1, 0.1)
+        --love.graphics.draw(plus, love.graphics.getWidth() - plus:getWidth() * 1.5 - (lmxsdk:getWidth() * 1.5), love.graphics.getHeight() - plus:getHeight() * 1.5, 0, 1.5)
+        --love.graphics.draw(lmxsdk, love.graphics.getWidth() - (lmxsdk:getWidth() * 1.5), love.graphics.getHeight() - lmxsdk:getHeight() * 1.5, 0, 1.5, 1.5)
         love.graphics.present()
         
         _doLoad(_type, a)
     end
+end
+
+function preloader.clear()
+    lume.clear(AssetQueue.images)
+    lume.clear(AssetQueue.sounds)
+    lume.clear(AssetQueue.fonts)
 end
 
 return preloader

@@ -32,12 +32,15 @@ end
 
 function math.dist(x1, x2, y1, y2) return ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) ^ 2 end
 
-function math.clamp(mode, low, n, high)
-    if n == low or n == high then return n
-    elseif mode == 'inverse' then
-        if n < low or n > high then return n end
-    else return math.min(math.max(low, n), high)
-    end
+function math.distance(x1, y1, x2, y2)
+    local dx = x1 - x2
+    local dy = y1 - y2
+    return math.sqrt(dx * dx + dy * dy)
+end
+
+function math.clamp(val, lower, upper)
+    if lower > upper then lower, upper = upper, lower end -- swap if boundaries supplied the wrong way
+    return math.max(lower, math.min(upper, val))
 end
 
 function math.signed(n)

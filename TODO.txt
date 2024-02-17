@@ -25,3 +25,10 @@
 [X] Suporte basico a conquistas
     [X] gerenciador de conquistas
 [X] Adicionar suporte a gif pra rodar no loader
+
+[0.0.3]
+
+[.] Engine
+    [X] Audio posicional (+)
+    [.] Chunking no loading de assets
+    [.] fazer algo pra reabilitar suporte a GIF
