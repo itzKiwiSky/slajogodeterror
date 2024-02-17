@@ -28,7 +28,7 @@
 
 [0.0.3]
 
-[.] Engine
+[X] Engine
     [X] Audio posicional (+)
-    [.] Chunking no loading de assets
-    [.] fazer algo pra reabilitar suporte a GIF
+    [X] Chunking no loading de assets
+    [X] fazer algo pra reabilitar suporte a GIF
