@@ -56,9 +56,6 @@ return function()
                 if slab.Input("sfxVolumeInput", {Text = tostring(lollipop.currentSave.game.settings.audio.sfx), NumbersOnly = true, MinNumber = 0, MaxNumber = 10}) then
                     lollipop.currentSave.game.settings.audio.sfx = slab.GetInputNumber()
                 end
-                if slab.CheckBox(lollipop.currentSave.game.settings.audio.playVoices, "Enable Voice lines") then
-                    lollipop.currentSave.game.settings.audio.playVoices = not lollipop.currentSave.game.settings.audio.playVoices
-                end
                 slab.Text("Voice line Volume")
                 slab.SameLine()
                 if slab.Input("voicelineVolumeInput", {Text = tostring(lollipop.currentSave.game.settings.audio.voicesVolume), NumbersOnly = true, MinNumber = 0, MaxNumber = 10}) then

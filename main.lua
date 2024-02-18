@@ -1,5 +1,5 @@
 require('src.Components.Initialization.Run')
-require('src.Components.Initialization.ErrorHandler')
+--require('src.Components.Initialization.ErrorHandler')
 preloader = require 'src.Components.Initialization.Preloader'
 
 _gameVer = 0
@@ -86,7 +86,6 @@ function love.load()
 
     --% Helper functions %--
     fontmanager = require 'src.Components.Helpers.FontManager'
-    lovecallbacks = require 'src.Components.Helpers.LoveCallbacks'
 
     --% Save setup %--
     lollipop.currentSave.game = {
@@ -111,6 +110,24 @@ function love.load()
                 langID = 1
             }
         },
+        chapters = {
+            {
+                isLocked = false,
+                completed = false
+            },
+            {
+                isLocked = true,
+                completed = false
+            },
+            {
+                isLocked = true,
+                completed = false
+            },
+            {
+                isLocked = true,
+                completed = false
+            },
+        }
     }
 
     lollipop.initializeSlot("bird")

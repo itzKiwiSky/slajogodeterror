@@ -28,4 +28,10 @@ function debugstate:update(elapsed)
     audio2:update(elapsed)
 end
 
+function debugstate:keypressed(k)
+    if k == "f3" then
+        error("sex")
+    end
+end
+
 return debugstate

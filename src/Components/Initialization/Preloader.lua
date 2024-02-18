@@ -78,6 +78,8 @@ function preloader.clear()
     lume.clear(AssetQueue.images)
     lume.clear(AssetQueue.sounds)
     lume.clear(AssetQueue.fonts)
+
+    collectgarbage("collect")
 end
 
 return preloader
