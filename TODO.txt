@@ -35,7 +35,7 @@
 
 [0.0.4]
 
-[.] Menus
-    [.] Menu principal 
-    [.] Menu de configurações
-    [.] Menu de seleção de capitulos
+[X] Menus
+    [X] Menu principal 
+    [X] Menu de configurações
+    [X] Menu de seleção de capitulos
