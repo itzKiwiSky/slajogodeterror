@@ -2,7 +2,7 @@ mainmenustate = {}
 
 function mainmenustate:enter()
     settingsPopupInterface = require 'src.Components.Interface.Menus.SettingsMenuInterface'
-    chapterselectionsubtstate = require 'src.SubStates.Menu.ChaperSelectionSubState'
+    chapterselectionsubstate = require 'src.SubStates.Menu.ChapterSelectionSubState'
 
     interface = suit.new()
 
@@ -12,7 +12,7 @@ function mainmenustate:enter()
     settingsVisible = false
     chapterSelectionVisible = false
 
-    chapterselectionsubtstate:enter()
+    chapterselectionsubstate:enter()
 end
 
 function mainmenustate:draw()
@@ -21,7 +21,7 @@ function mainmenustate:draw()
     slab.Draw()
     love.graphics.setColor(1, 1, 1, 1)
     if chapterSelectionVisible then
-        chapterselectionsubtstate:draw()
+        chapterselectionsubstate:draw()
     end
 end
 
@@ -43,7 +43,13 @@ function mainmenustate:update(elapsed)
     end
 
     if chapterSelectionVisible then
-        chapterselectionsubtstate:update(elapsed)
+        chapterselectionsubstate:update(elapsed)
+    end
+end
+
+function mainmenustate:mousepressed(x, y, button)
+    if chapterSelectionVisible then
+        chapterselectionsubstate:mousepressed(x, y, button)
     end
 end
 
